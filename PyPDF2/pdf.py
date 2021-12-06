@@ -2743,6 +2743,8 @@ class ContentStream(DecodedStreamObject):
         if isinstance(stream, ArrayObject):
             data = b_("")
             for s in stream:
+                if data:
+                    data += b_("\n")
                 data += b_(s.getObject().getData())
             stream = BytesIO(b_(data))
         else:
